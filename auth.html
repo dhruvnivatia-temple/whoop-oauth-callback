@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WHOOP OAuth Callback</title>
+</head>
+<body>
+  <h2>Authorization Successful</h2>
+  <p>You can close this window.</p>
+
+  <script>
+    // Extract "code" from URL and send it to your backend
+    const urlParams = new URLSearchParams(window.location.search);
+    const authCode = urlParams.get('code');
+
+    if (authCode) {
+        // 🔥 IMPORTANT: Replace with your backend endpoint
+        fetch("https://YOUR_BACKEND_URL_HERE/receive_whoop_code", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code: authCode })
+        });
+    }
+  </script>
+</body>
+</html>
